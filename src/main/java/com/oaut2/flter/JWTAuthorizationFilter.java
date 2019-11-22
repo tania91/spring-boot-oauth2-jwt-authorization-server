@@ -84,7 +84,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter{
 		    	  session.setAttribute("status", HttpServletResponse.SC_FORBIDDEN);
 		    	  session.setAttribute("message", "The token structure is not correct");
 	    	  }
-	    	  List<TokenEntity> tokenEntitySSO = tokenService.findSSO(token.substring(token.indexOf(" ")+1)); 
+	    	  List<TokenEntity> tokenEntitySSO = tokenService.find(token.substring(token.indexOf(" ")+1)); 
 	    	  
 	    	  if(!tokenEntitySSO.isEmpty()) {
 		    	  Jws<Claims> parsedToken = Jwts.parser()

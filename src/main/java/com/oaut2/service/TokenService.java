@@ -46,26 +46,12 @@ public class TokenService {
 		return deletedCount;
 	}
 	
-	public List<TokenEntity> find(String token) throws Exception {
-		List<TokenEntity> tokens = new ArrayList<TokenEntity>(0);
-		try {
-			
-			String queryString  = "SELECT * FROM token WHERE TOKEN =" + token;
-			
-			tokens = manager.createNativeQuery(queryString,  TokenEntity.class)
-					.getResultList();;
-			
-		}catch(Exception e){
-			throw new Exception(e.getMessage());
-		};
-		return tokens;
-	}
 	
-	public List<TokenEntity> findSSO(String valor) throws Exception {
+	public List<TokenEntity> find(String valor) throws Exception {
 		List<TokenEntity> tokens = new ArrayList<TokenEntity>(0);
 		try {
 			
-			String queryString  = "SELECT * FROM tokensso WHERE ACCESS_TOKEN ='" + valor + "'";
+			String queryString  = "SELECT * FROM token WHERE ACCESS_TOKEN ='" + valor + "'";
 			
 			tokens = manager.createNativeQuery(queryString,  TokenEntity.class)
 					.getResultList();
